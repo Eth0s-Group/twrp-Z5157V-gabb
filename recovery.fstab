@@ -1,10 +1,7 @@
 # mount point       fstype    device                                                                flags
-/system             ext4      system                                                                flags=display="System";backup=1;logical;
-/system_image       emmc      system                                                                flags=display="System image";backup=1;flashimg=1;logical;
-/vendor             ext4      vendor                                                                flags=display="Vendor";backup=1;logical;
-/vendor_image       emmc      vendor                                                                flags=display="Vendor image";backup=1;flashimg=1;logical;
-/product            ext4      product                                                               flags=display="Product";backup=1;logical;
-/product_image      emmc      product                                                               flags=display="Product image";backup=1;flashimg=1;logical;
+/system             ext4      /dev/block/dm-1                                                       flags=display="System";backup=1;logical;
+/vendor             ext4      /dev/block/mapper/vendor                                              flags=display="Vendor";backup=1;logical;
+/product            ext4      /dev/block/mapper/product                                             flags=display="Product";backup=1;logical;
 /metadata           ext4      /dev/block/platform/bootdevice/by-name/md_udc                         flags=display="Metadata";
 /data               f2fs      /dev/block/platform/bootdevice/by-name/userdata                       flags=display="Data";
 /cache              ext4      /dev/block/platform/bootdevice/by-name/cache                          flags=display="Cache";
@@ -14,8 +11,8 @@
 /nvcfg              ext4      /dev/block/platform/bootdevice/by-name/nvcfg                          flags=display="Nvcfg";
 /persist            ext4      /dev/block/platform/bootdevice/by-name/persist                        flags=display="Persist";
 /persist_image      emmc      /dev/block/platform/bootdevice/by-name/persist                        flags=display="Persist image";backup=1;flashimg=1;
-/externdevice*      auto      auto                                                                  flags=display="Externdevice*";logical;
-/mt_usb*            auto      vfat                                                                  flags=display="Mt_usb*";logical;
+/external_sd        vfat      /dev/block/mmcblk1p1                                                  flags=removable;storage;display="SDCARD";
+/usb_otg            auto      /dev/block/sda1                                                       flags=removable;storage;display="USB-OTG";
 /persistent         emmc      /dev/block/platform/bootdevice/by-name/frp                            flags=display="Persistent";
 /nvram              emmc      /dev/block/platform/bootdevice/by-name/nvram                          flags=display="Nvram";
 /proinfo            emmc      /dev/block/platform/bootdevice/by-name/proinfo                        flags=display="Proinfo";
